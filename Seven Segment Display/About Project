@@ -1,0 +1,38 @@
+🔢 STM32 — Display Digits 0 to 9 on LEDs (0–9 Counter Project)
+📘 Project Overview
+
+This project demonstrates how to display numbers 0 to 9 using 8 individual LEDs connected to GPIO Port B of the STM32 Nucleo-C031C6 board.
+Each digit is created by turning specific LEDs ON, while turning the remaining LEDs OFF, forming a custom LED-pattern for each number.
+
+The code continuously loops from 0 → 9, with a 1-second delay between each number.
+
+🛠️ What This Project Teaches
+
+✔ Understanding GPIO configuration in STM32CubeIDE
+✔ Controlling multiple pins using HAL_GPIO_WritePin()
+✔ Using bitwise OR (|) to group multiple pins
+✔ Creating LED patterns using set/reset masks
+✔ Using HAL_Delay() for time control
+
+This project is perfect for beginners learning GPIO control.
+
+💡 How It Works
+
+Each number (0–9) is represented by two masks:
+
+1️⃣ Set Mask (D0S, D1S, …)
+
+LEDs that should turn ON to form the digit.
+
+2️⃣ Reset Mask (D0R, D1R, …)
+
+LEDs that should turn OFF for that digit.
+
+Example:
+
+HAL_GPIO_WritePin(GPIOB, D0S, GPIO_PIN_SET);    // Turn ON required LEDs for 0
+HAL_GPIO_WritePin(GPIOB, D0R, GPIO_PIN_RESET);  // Turn OFF remaining LEDs
+HAL_Delay(1000);                                // Wait 1 second
+
+
+This is repeated for digits 0,1,2,…9.
