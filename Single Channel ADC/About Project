@@ -1,0 +1,83 @@
+💡 Single Channel ADC LED Control
+
+Project Description:
+This STM32 project demonstrates how to read analog values using a single ADC channel and control an LED based on the value.
+
+If the ADC value < 2048, the LED is OFF.
+
+If the ADC value ≥ 2048, the LED is ON.
+
+This is a beginner-friendly project to understand ADC reading, conditional logic, and GPIO control on STM32.
+
+🔹 How It Works
+
+Connect an analog input (e.g., potentiometer) to an ADC pin of STM32.
+
+STM32 reads the analog voltage and converts it into a digital value (0–4095) using the ADC.
+
+Compare the ADC value with 2048 to decide the LED state:
+
+if(adcResult < 2048) {
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // LED OFF
+} else {
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);   // LED ON
+}
+
+🔹 Explanation of ADC HAL Functions
+HAL_ADC_Start(&hadc1);
+HAL_ADC_PollForConversion(&hadc1, 100);
+adcResult = HAL_ADC_GetValue(&hadc1);
+HAL_ADC_Stop(&hadc1);
+
+
+HAL_ADC_Start(&hadc1);
+
+Starts the ADC conversion process on the configured channel.
+
+HAL_ADC_PollForConversion(&hadc1, 100);
+
+Waits (polls) until the ADC conversion is complete.
+
+100 is the timeout in milliseconds.
+
+adcResult = HAL_ADC_GetValue(&hadc1);
+
+Reads the converted digital value from the ADC.
+
+Value range depends on ADC resolution (e.g., 0–4095 for 12-bit).
+
+HAL_ADC_Stop(&hadc1);
+
+Stops the ADC to free resources.
+
+🔹 Features
+
+Learn single-channel ADC reading
+
+Control LED based on analog input
+
+Beginner-level analog-to-digital conversion project
+
+🔹 Requirements
+
+STM32 development board (e.g., STM32F103 “Blue Pill”)
+
+LED with current-limiting resistor
+
+Potentiometer or analog sensor
+
+STM32CubeIDE
+
+🔹 How to Run
+
+Connect the potentiometer to the ADC pin and LED to a GPIO pin.
+
+Open the project in STM32CubeIDE.
+
+Build and flash the code.
+
+Adjust the potentiometer:
+
+ADC < 2048 → LED OFF
+
+ADC ≥ 2048 → LED ON ✅
