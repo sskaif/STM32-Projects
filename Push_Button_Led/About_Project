@@ -1,0 +1,63 @@
+💡 Button-Controlled LED Project
+
+Project Description:
+This project demonstrates a simple button-controlled LED using an STM32 microcontroller. It’s a beginner-friendly project that helps you understand GPIO input and output, digital reading, and basic microcontroller programming.
+
+🔹 How It Works
+
+A push button is connected to one GPIO pin of the STM32.
+
+An LED is connected to another GPIO pin.
+
+When the button is pressed, the microcontroller detects the HIGH/LOW signal and turns the LED ON.
+
+When the button is released, the LED turns OFF.
+
+🔹 Circuit Diagram
+STM32 GPIO Pin ---- Push Button ---- GND
+STM32 GPIO Pin ---- Resistor ---- LED ---- GND
+
+
+(Connect a pull-down or pull-up resistor depending on your logic)
+
+🔹 Code Logic (Simplified)
+if (HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin) == GPIO_PIN_SET) {
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // LED ON
+} else {
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // LED OFF
+}
+
+
+HAL_GPIO_ReadPin() reads the button state.
+
+HAL_GPIO_WritePin() sets the LED ON or OFF.
+
+🔹 Features
+
+Learn GPIO input/output in STM32
+
+Understand polling and conditional logic
+
+Beginner-level project perfect for hands-on practice
+
+🔹 Requirements
+
+STM32 development board (e.g., STM32F103C8 “Blue Pill”)
+
+Push button
+
+LED and current-limiting resistor (220Ω)
+
+STM32CubeIDE
+
+🔹 How to Run
+
+Connect the button and LED to the GPIO pins.
+
+Open the project in STM32CubeIDE.
+
+Build and flash the code to the board.
+
+Press the button → LED turns ON
+
+Release the button → LED turns OFF ✅
